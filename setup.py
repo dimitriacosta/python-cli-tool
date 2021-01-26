@@ -10,13 +10,13 @@ def read_requirements():
 
 
 setup(
-    name='eve',
+    name='jarvis',
     version='0.1',
     packages=find_packages(),
     include_package_data=True,
     install_requires=read_requirements(),
     entry_points='''
         [console_scripts]
-        eve=src.cli:cli
+        jarvis=src.cli:cli
     '''
 )
