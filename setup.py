@@ -1,7 +1,11 @@
+"""
+Install the jarvis CLI tool
+"""
 from setuptools import setup, find_packages
 
 
 def read_requirements():
+    """Install the requirements from the txt file"""
     with open('requirements.txt', 'r') as req:
         content = req.read()
         requirements = content.split('\n')
