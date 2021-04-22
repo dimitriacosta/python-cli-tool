@@ -20,17 +20,17 @@ class Context:
 
 
 @click.group()
-@click.option("-l", "--location", type=str, help="Weather at this location")
+@click.option("-l", "--location", type=str, help="Weather at this location.")
 @click.pass_context
 def cli(ctx, location):
-    """Weather info"""
+    """Checks the weather."""
     ctx.obj = Context(location)
 
 
 @cli.command()
 @click.pass_context
 def current(ctx):
-    """Get current weather data."""
+    """Gets the weather for the current day."""
     result = ctx.obj.weather.current(location=ctx.obj.location)
     click.echo(f' {result["location"]} - {result["status"].upper()} '.center(45, "="))
     click.echo(f'\U0001F525 Temp: {result["temp"]} - {result["min"]}/{result["max"]} (min/max)')
@@ -45,7 +45,7 @@ def current(ctx):
 @cli.command()
 @click.pass_context
 def forecast(ctx):
-    """Get forecast weather data."""
+    """Gets the forecast weather for the next 5 days."""
     to_display = [wx for wx in ctx.obj.weather.forecast(location=ctx.obj.location) if is_around_midday(wx["time"])]
 
     def formatter(data):
