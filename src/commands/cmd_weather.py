@@ -1,6 +1,6 @@
 import click
 import time
-from src.service import weather
+from src.service import svc_weather
 
 
 def convert_epoch_to(epoch, fmt):
@@ -16,7 +16,7 @@ class Context:
 
     def __init__(self, location):
         self.location = location
-        self.weather = weather.Weather()
+        self.weather = svc_weather.Weather()
 
 
 @click.group()
